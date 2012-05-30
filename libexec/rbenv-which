@@ -53,6 +53,11 @@ if [ "$RBENV_VERSION" = "system" ]; then
   RBENV_COMMAND_PATH="$(command -v "$RBENV_COMMAND")"
 else
   RBENV_COMMAND_PATH="${RBENV_ROOT}/versions/${RBENV_VERSION}/bin/${RBENV_COMMAND}"
+  if [ "$RBENV_COMMAND" != "gem" ]; then
+    if [ ! -x "$RBENV_COMMAND_PATH" ]; then
+      RBENV_COMMAND_PATH="$(cd ${RBENV_ROOT}/versions/${RBENV_VERSION}/../../gems/${RBENV_VERSION} && pwd)/bin/${RBENV_COMMAND}"
+    fi
+  fi
 fi
 
 for script in $(rbenv-hooks which); do
