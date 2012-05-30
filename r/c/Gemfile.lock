@@ -4,6 +4,7 @@ GEM
     haml (3.1.6)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES
