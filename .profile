@@ -1,2 +1,2 @@
-PATH=$PATH:$HOME/.rbenv
-eval "$(rbenv init -)"
+export RBENV_ROOT=$HOME/.rbenv
+PATH=$RBENV_ROOT/shims:$RBENV_ROOT/bin:$PATH
