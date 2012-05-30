@@ -1,6 +1,4 @@
-#!/usr/bin/env ruby-local-exec
+#!/bin/bash
 
-require 'rubygems'
-require 'bundler/setup'
-require 'haml'
-puts RUBY_VERSION
+bundle --local --path vendor/bundle
+./run.rb
