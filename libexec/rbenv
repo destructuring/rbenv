@@ -10,31 +10,6 @@ shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 source "$shome/libexec/_jason"
 [ -n "${RBENV_DEBUG:-}" ] && set -x
 
-resolve_link() {
-  $(type -p greadlink readlink | head -1) "$1"
-}
-
-abs_dirname() {
-  local cwd="$(pwd)"
-  local path="$1"
-
-  while [ -n "$path" ]; do
-    cd "${path%/*}"
-    local name="${path##*/}"
-    path="$(resolve_link "$name" || true)"
-  done
-
-  pwd
-  cd "$cwd"
-}
-
-if [ -z "${RBENV_ROOT:-}" ]; then
-  RBENV_ROOT="${HOME}/.rbenv"
-else
-  RBENV_ROOT="${RBENV_ROOT%/}"
-fi
-export RBENV_ROOT
-
 if [ -z "${RBENV_DIR:-}" ]; then
   RBENV_DIR="$(pwd)"
 else
