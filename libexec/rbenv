@@ -1,13 +1,7 @@
 #!/bin/bash
 
 #/ NAME
-#/     bump -- increments a semver in a file or in git tags
-#/
-#/ SYNOPSIS
-#/     bump [major|minor|patch]
-#/     bump 1.2.3
-#/     bump
-#/       without arguments is equivalent to 'bump patch'
+#/     rbenv -- 
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
