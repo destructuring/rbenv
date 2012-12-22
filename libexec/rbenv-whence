@@ -19,6 +19,14 @@ whence() {
   local command="$1"
   rbenv-versions --bare | while read version; do
     path="$(rbenv-prefix "$version")/bin/${command}"
+    if [ ! -x "$path" ]; then
+      RBENV_VERSION_ALT="$(readlink "${RBENV_ROOT}/versions/${version}" 2>&- || true)"
+      if [[ -z "$RBENV_VERSION_ALT" ]]; then
+        RBENV_VERSION_ALT=$version
+      fi
+      path="$(cd -P -- "${RBENV_ROOT}/versions/${version}" && pwd -P)/../../gems/${RBENV_VERSION_ALT}/bin/$command"
+    fi
+
     if [ -x "$path" ]; then
       [ "$print_paths" ] && echo "$path" || echo "$version"
     fi
