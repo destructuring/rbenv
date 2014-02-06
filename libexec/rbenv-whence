@@ -24,7 +24,7 @@ whence() {
       if [[ -z "$RBENV_VERSION_ALT" ]]; then
         RBENV_VERSION_ALT=$version
       fi
-      path="$(cd -P -- "${RBENV_ROOT}/versions/${version}" && pwd -P)/../../gems/${RBENV_VERSION_ALT}/bin/$command"
+      path="$(ls -d $(cd -P -- "${RBENV_ROOT}/versions/${version}" && pwd -P)/../../gems/${RBENV_VERSION_ALT}*/bin/$command 2>&-)"
     fi
 
     if [ -x "$path" ]; then

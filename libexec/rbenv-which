@@ -59,7 +59,7 @@ else
       if [[ -z "$RBENV_VERSION_ALT" ]]; then
         RBENV_VERSION_ALT="$RBENV_VERSION"
       fi
-      RBENV_COMMAND_PATH="$(cd ${RBENV_ROOT}/versions/${RBENV_VERSION}/../../gems/${RBENV_VERSION_ALT} && pwd)/bin/${RBENV_COMMAND}"
+      RBENV_COMMAND_PATH="$(ls -d $(cd ${RBENV_ROOT}/versions/${RBENV_VERSION}/../../gems/${RBENV_VERSION_ALT} && pwd)*/bin/${RBENV_COMMAND} 2>&-)"
     fi
   fi
 fi
