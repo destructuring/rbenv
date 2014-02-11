@@ -120,7 +120,7 @@ shopt -s nullglob
 make_shims ../versions/*/bin/*
 
 for ruby_version in ../versions/*; do
-  ruby_real="$(readlink "$ruby_version" 2>&- || true)"
+  ruby_real="$(basename $(readlink "$ruby_version" 2>&-) || true)"
   if [[ -n "$ruby_real" ]]; then
     make_shims "$(cd -P -- ../versions/$ruby_real && pwd -P)"/../../gems/$ruby_real/bin/*
   fi

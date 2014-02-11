@@ -55,7 +55,7 @@ else
   RBENV_COMMAND_PATH="${RBENV_ROOT}/versions/${RBENV_VERSION}/bin/${RBENV_COMMAND}"
   if [ "$RBENV_COMMAND" != "gem" ]; then
     if [ ! -x "$RBENV_COMMAND_PATH" ]; then
-      RBENV_VERSION_ALT="$(readlink "${RBENV_ROOT}/versions/${RBENV_VERSION}" 2>&- || true)"
+      RBENV_VERSION_ALT="$(basename $(readlink "${RBENV_ROOT}/versions/${RBENV_VERSION}" 2>&-) || true)"
       if [[ -z "$RBENV_VERSION_ALT" ]]; then
         RBENV_VERSION_ALT="$RBENV_VERSION"
       fi
