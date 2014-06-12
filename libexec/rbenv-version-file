@@ -7,6 +7,9 @@ while [ -n "$root" ]; do
   if [ -e "${root}/.rbenv-version" ]; then
     echo "${root}/.rbenv-version"
     exit
+  elif [ -e "${root}/.ruby-version" ]; then
+    echo "${root}/.ruby-version"
+    exit
   fi
   root="${root%/*}"
 done
